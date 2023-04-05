@@ -1,0 +1,8 @@
+version: "3.9"
+
+services:
+    temple_of_styx:
+        image: "ghcr.io/starshardstudio/temple_of_styx:latest"
+        restart: unless-stopped
+        env_file: 
+            - "stack.env"
