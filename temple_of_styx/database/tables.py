@@ -79,6 +79,7 @@ class Client(Base, authlib.integrations.sqla_oauth2.OAuth2ClientMixin):
 
 
 __all__ = (
+    "Base",
     "Person",
     "Control",
     "Identity",
