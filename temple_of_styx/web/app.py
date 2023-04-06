@@ -25,4 +25,4 @@ def healthcheck():
 
 # Running this will run the app in debug mode.
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8080, debug=True, load_dotenv=True)
+    app.run(host="0.0.0.0", port=8080, debug=True)
