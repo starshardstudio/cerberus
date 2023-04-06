@@ -1,20 +1,15 @@
 import flask as f
-import flask_sqlalchemy
 
-from temple_of_styx.database.tables import Base
 from temple_of_styx.config import DATABASE_URL
 from .decorators import json
+from .extensions import ext_sqla
 
 
 app = f.Flask(__name__)
 
 app.config["SQLALCHEMY_DATABASE_URI"] = DATABASE_URL.__wrapped__
 
-ext_sqla = flask_sqlalchemy.SQLAlchemy(
-    app=app, 
-    metadata=Base.metadata,
-    add_models_to_shell=True,
-)
+ext_sqla.init_app(app)
 
 
 @app.route("/healthcheck")
