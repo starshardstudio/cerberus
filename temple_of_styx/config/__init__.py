@@ -5,7 +5,7 @@ import cfig
 config = cfig.Configuration()
 
 
-@config.required(key="DATABASE_URL")
+@config.required()
 def DATABASE_URL(value) -> s.URL:
     return s.make_url(value)
 
