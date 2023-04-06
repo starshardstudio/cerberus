@@ -34,6 +34,9 @@ class Control(Base):
     """
     __tablename__ = "control"
 
+    person_name: so.Mapped["str"] = so.mapped_column(primary_key=True)
+    identity_name: so.Mapped["str"] = so.mapped_column(primary_key=True)
+
     person: so.Mapped["Person"] = so.relationship(back_populates="controls")
     identity: so.Mapped["Identity"] = so.relationship(back_populates="controlled_by")
 
