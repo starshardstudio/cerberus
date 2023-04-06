@@ -76,3 +76,12 @@ class Client(Base, authlib.integrations.sqla_oauth2.OAuth2ClientMixin):
     creator_name: so.Mapped[str] = so.mapped_column(s.ForeignKey("people.name"), nullable=False)
 
     creator: so.Mapped["Person"] = so.relationship(back_populates="clients")
+
+
+__all__ = (
+    "Person",
+    "Control",
+    "Identity",
+    "Token",
+    "Client",
+)
