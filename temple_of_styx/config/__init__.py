@@ -13,4 +13,3 @@ def DATABASE_URL(value) -> s.URL:
 __all__ = (
     "DATABASE_URL",
 )
-
