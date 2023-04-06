@@ -2,7 +2,7 @@ import flask as f
 
 from temple_of_styx.config import DATABASE_URL
 from .decorators import json
-from .extensions import ext_sqla
+from .extensions import ext_sqla, ext_auth
 
 
 app = f.Flask(__name__)
@@ -10,6 +10,7 @@ app = f.Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = DATABASE_URL.__wrapped__
 
 ext_sqla.init_app(app)
+ext_auth.init_app(app)
 
 
 @app.route("/healthcheck")
