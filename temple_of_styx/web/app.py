@@ -3,6 +3,7 @@ import flask as f
 from temple_of_styx.config import DATABASE_URL, FLASK_SECRET_KEY
 from .decorators import json
 from .extensions import ext_sqla, ext_auth
+from .blueprints import health
 
 
 app = f.Flask(__name__)
@@ -13,11 +14,7 @@ app.config["SQLALCHEMY_DATABASE_URI"] = DATABASE_URL.__wrapped__
 ext_sqla.init_app(app)
 ext_auth.init_app(app)
 
-
-@app.route("/healthcheck")
-@json
-def healthcheck():
-    return True
+app.register_blueprint(health.blueprint)
 
 
 # Running this will run the app in debug mode.
