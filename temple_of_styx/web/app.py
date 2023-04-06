@@ -13,7 +13,7 @@ app.config["SQLALCHEMY_DATABASE_URI"] = DATABASE_URL.__wrapped__
 ext_sqla = flask_sqlalchemy.SQLAlchemy(
     app=app, 
     metadata=Base.metadata,
-    add_models_to_shell=False,
+    add_models_to_shell=True,
 )
 
 
