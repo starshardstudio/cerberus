@@ -10,7 +10,7 @@
 			"request": "launch",
 			"module": "temple_of_styx.web.app",
             "envFile": "${workspaceFolder}/.env.local",
-			"justMyCode": false,
+			"justMyCode": true,
             "presentation":{
                 "hidden": false,
                 "group": "Web",
