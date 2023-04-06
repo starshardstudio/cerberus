@@ -4,6 +4,7 @@ Module defining declaratively SQL tables via :mod:`sqlalchemy`.
 
 import sqlalchemy as s
 import sqlalchemy.orm as so
+import sqlalchemy.schema as ss
 import authlib.integrations.sqla_oauth2
 import uuid
 
@@ -34,11 +35,17 @@ class Control(Base):
     """
     __tablename__ = "control"
 
-    person_name: so.Mapped["str"] = so.mapped_column(primary_key=True)
-    identity_name: so.Mapped["str"] = so.mapped_column(primary_key=True)
+    id: so.Mapped[uuid.UUID] = so.mapped_column(primary_key=True)
+
+    person_name: so.Mapped["str"] = so.mapped_column()
+    identity_name: so.Mapped["str"] = so.mapped_column()
 
     person: so.Mapped["Person"] = so.relationship(back_populates="controls")
     identity: so.Mapped["Identity"] = so.relationship(back_populates="controlled_by")
+
+    __table_args__ = (
+        ss.UniqueConstraint(person_name, identity_name, name="bridge_person_identity"),
+    )
 
 
 class Identity(Base):
