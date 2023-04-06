@@ -1,12 +1,13 @@
 import flask as f
 
-from temple_of_styx.config import DATABASE_URL
+from temple_of_styx.config import DATABASE_URL, FLASK_SECRET_KEY
 from .decorators import json
 from .extensions import ext_sqla, ext_auth
 
 
 app = f.Flask(__name__)
 
+app.config["SECRET_KEY"] = FLASK_SECRET_KEY.__wrapped__
 app.config["SQLALCHEMY_DATABASE_URI"] = DATABASE_URL.__wrapped__
 
 ext_sqla.init_app(app)
