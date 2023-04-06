@@ -42,10 +42,25 @@ class Control(Base):
 
     person: so.Mapped["Person"] = so.relationship(back_populates="controls")
     identity: so.Mapped["Identity"] = so.relationship(back_populates="controlled_by")
+    scopes: so.Mapped["Scope"] = so.relationship(back_populates="control")
 
     __table_args__ = (
         ss.UniqueConstraint(person_name, identity_name, name="bridge_person_identity"),
     )
+
+
+class Scope(Base):
+    """
+    The OAuth2 scopes of an :class:`Identity` that can be :class:`Control`-led by a given :class:`Person`.
+    """
+    __tablename__ = "scopes"
+
+    id: so.Mapped[uuid.UUID] = so.mapped_column(primary_key=True)
+
+    control_id: so.Mapped[uuid.UUID] = so.mapped_column(s.ForeignKey("control.id"), nullable=False)
+    name: so.Mapped[str] = so.mapped_column(nullable=False)
+
+    control: so.Mapped["Control"] = so.relationship(back_populates="scopes")
 
 
 class Identity(Base):
