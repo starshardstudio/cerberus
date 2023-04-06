@@ -20,7 +20,7 @@ ext_sqla = flask_sqlalchemy.SQLAlchemy(
 @app.route("/healthcheck")
 @json
 def healthcheck():
-    return f.jsonify(True)
+    return True
 
 
 # Running this will run the app in debug mode.
