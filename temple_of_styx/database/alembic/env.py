@@ -1,8 +1,9 @@
 from sqlalchemy import create_engine
 from alembic import context
 
-from ...config import DATABASE_URL
-from ..tables import Base
+# Don't use relative imports here!
+from temple_of_styx.config import DATABASE_URL
+from temple_of_styx.database.tables import Base
 
 
 def run_migrations_offline() -> None:
