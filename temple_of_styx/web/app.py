@@ -1,4 +1,5 @@
 import flask as f
+import pkg_resources
 
 from temple_of_styx.config import DATABASE_URL, FLASK_SECRET_KEY, STYX_TITLE
 from .decorators import json
@@ -17,6 +18,9 @@ ext_auth.init_app(app)
 
 app.register_blueprint(health.blueprint)
 
+@app.before_request
+def get_version():
+    f.g["STYX_VERSION"] = pkg_resources.get_distribution("temple_of_styx").version
 
 # Running this will run the app in debug mode.
 if __name__ == "__main__":
