@@ -13,7 +13,7 @@ def healthcheck():
     elif f.request.accept_mimetypes.accept_json:
         return f.jsonify(True)
     else:
-        return None, 406
+        return f.abort(406)
 
 
 __all__ = (
