@@ -7,9 +7,10 @@ blueprint = f.Blueprint('health', __name__, template_folder='templates')
 
 
 @blueprint.route("/healthcheck")
-@json
 def healthcheck():
-    return True
+    if f.request.accept_mimetypes.accept_json:
+        return f.jsonify(True)
+    return f.render_template("healthcheck.html")
 
 
 __all__ = (
