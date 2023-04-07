@@ -11,6 +11,15 @@ end_of_line = lf
 # Enforce newline at end of files
 insert_final_newline = true
 
+indent_size = 4
+
+
+[*.py]
+
 # Python (sadly) strongly recommends the usage of 4 spaces as indentation.
 indent_style = space
-indent_size = 4
+
+
+[*.html]
+
+indent_style = tab
