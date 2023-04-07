@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<title>{{ config["STYX_TITLE"] }}</title>
+		<link rel="stylesheet" href="https://unpkg.com/@steffo/bluelib@8.1.0/dist/base.root.css" type="text/css">
+		<link rel="stylesheet" href="https://unpkg.com/@steffo/bluelib@8.1.0/dist/classic.root.css" type="text/css">
+		<link rel="stylesheet" href="https://unpkg.com/@steffo/bluelib@8.1.0/dist/glass.root.css" type="text/css">
+		<link rel="stylesheet" href="https://unpkg.com/@steffo/bluelib@8.1.0/dist/layouts-center.root.css" type="text/css">
+		<link rel="stylesheet" href="https://unpkg.com/@steffo/bluelib@8.1.0/dist/colors-purplestar.root.css" type="text/css">
+		<link rel="stylesheet" href="https://unpkg.com/@steffo/bluelib@8.1.0/dist/fonts-fira-ghpages.root.css" type="text/css">
+		<link rel="stylesheet" href="/index.css" type="text/css">
+	</head>
+	<body class="bluelib layout-center">
+		<img class="layout-center-background" src="https://bluelib.steffo.eu/examples/kazuend-2KXEb_8G5vo-unsplash-edited.jpg">
+		<header>
+			<h1>
+				{{ config["STYX_TITLE"] }}
+			</h1>
+		</header>
+		<main>
+			{% for category, message in get_flashed_messages(with_categories=True) %}
+				<div class="chapter-1">
+					<div class="panel box {{ category }}">
+						<p>
+							{{ message }}
+						</p>
+					</div>
+				</div>
+			{% endfor %}
+			{% block main %}{% endblock %}
+		</main>
+		<footer>
+			<a href="https://github.com/starshardstudio/temple-of-styx">Temple of Styx v{{ g["STYX_VERSION"] }}</a>
+		</footer>
+	</body>
+</html>
