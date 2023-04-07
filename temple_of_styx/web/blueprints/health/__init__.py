@@ -8,9 +8,12 @@ blueprint = f.Blueprint('health', __name__, template_folder='templates')
 
 @blueprint.route("/healthcheck")
 def healthcheck():
-    if f.request.accept_mimetypes.accept_json:
+    if f.request.accept_mimetypes.accept_html:
+        return f.render_template("healthcheck.html")
+    elif f.request.accept_mimetypes.accept_json:
         return f.jsonify(True)
-    return f.render_template("healthcheck.html")
+    else:
+        return None, 406
 
 
 __all__ = (
