@@ -16,7 +16,7 @@ app.config["STYX_TITLE"] = STYX_TITLE.__wrapped__
 ext_sqla.init_app(app)
 ext_auth.init_app(app)
 
-app.register_blueprint(health.blueprint)
+app.register_blueprint(health.blueprint, url_prefix="/health")
 
 @app.before_request
 def get_version():
