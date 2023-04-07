@@ -17,7 +17,7 @@ ext_auth: AuthorizationServer = AuthorizationServer(
     ),
     save_token=create_save_token_func(
         session=ext_sqla.session,
-        client_model=Token,
+        token_model=Token,
     )
 )
 
