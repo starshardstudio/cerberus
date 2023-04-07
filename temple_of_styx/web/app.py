@@ -20,7 +20,7 @@ app.register_blueprint(health.blueprint)
 
 @app.before_request
 def get_version():
-    f.g["STYX_VERSION"] = pkg_resources.get_distribution("temple_of_styx").version
+    f.g.styx_version = pkg_resources.get_distribution("temple_of_styx").version
 
 # Running this will run the app in debug mode.
 if __name__ == "__main__":
