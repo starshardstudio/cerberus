@@ -37,8 +37,8 @@ class Control(Base):
 
     id: so.Mapped[uuid.UUID] = so.mapped_column(primary_key=True)
 
-    person_name: so.Mapped["str"] = so.mapped_column(nullable=False)
-    identity_name: so.Mapped["str"] = so.mapped_column(nullable=False)
+    person_name: so.Mapped["str"] = so.mapped_column(s.ForeignKey("people.name"), nullable=False)
+    identity_name: so.Mapped["str"] = so.mapped_column(s.ForeignKey("identities.name"), nullable=False)
 
     person: so.Mapped["Person"] = so.relationship(back_populates="controls")
     identity: so.Mapped["Identity"] = so.relationship(back_populates="controlled_by")
