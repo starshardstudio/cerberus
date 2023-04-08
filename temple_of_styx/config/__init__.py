@@ -21,8 +21,18 @@ def STYX_TITLE(value) -> str:
     return value
 
 
+@config.required()
+def STYX_BLUELIB_COLORS(value) -> str:
+    """
+    The name of the colors stylesheet to load, without the prefix.
+    For example, `royalblue`.
+    """
+    return value
+
+
 __all__ = (
     "DATABASE_URL",
     "FLASK_SECRET_KEY",
     "STYX_TITLE",
+    "STYX_BLUELIB_COLORS",
 )
