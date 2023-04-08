@@ -7,6 +7,9 @@ import sqlalchemy.orm as so
 import sqlalchemy.schema as ss
 import authlib.integrations.sqla_oauth2
 import uuid
+import argon2
+
+from ..authn.password import a2ph
 
 
 class Base(so.DeclarativeBase):
@@ -28,6 +31,14 @@ class Person(Base):
     controls: so.Mapped["Control"] = so.relationship(back_populates="person")
     clients: so.Mapped["Client"] = so.relationship(back_populates="creator")
 
+    def set_password(self, value: str) -> None:
+        self.password = a2ph.hash(value)
+
+    def check_password(self, value: str) -> bool:
+        try:
+            return a2ph.verify(self.password, value)
+        except argon2.exceptions.VerifyMismatchError:
+            return False
 
 class Control(Base):
     """
