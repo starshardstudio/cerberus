@@ -9,7 +9,7 @@ from temple_of_styx.web.extensions import ext_sqla
 blueprint = f.Blueprint('login', __name__, template_folder='templates')
 
 
-@blueprint.route("/", methods=["GET", "POST", "DELETE"])
+@blueprint.route("/", methods=["GET", "POST"])
 def login():
     if f.request.accept_mimetypes.accept_html:
         match f.request.method: 
@@ -17,8 +17,9 @@ def login():
             case "GET":
                 return f.render_template("login.html")
             # Log out
-            case "DELETE":
-                fl.logout_user() 
+            case "POST":
+                fl.logout_user()
+                f.flash(f"Logout successful!", "green")
                 return f.render_template("login.html") 
             # Invalid method
             case _:
