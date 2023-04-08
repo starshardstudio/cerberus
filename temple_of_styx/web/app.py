@@ -3,7 +3,7 @@ import pkg_resources
 
 from temple_of_styx.config import DATABASE_URL, FLASK_SECRET_KEY, STYX_BLUELIB_COLORS, STYX_BACKGROUND_SRC, STYX_TITLE
 from .extensions import ext_sqla, ext_auth
-from .blueprints import health, login_password
+from .blueprints import health, login
 
 
 app = f.Flask(__name__)
@@ -18,7 +18,7 @@ ext_sqla.init_app(app)
 ext_auth.init_app(app)
 
 app.register_blueprint(health.blueprint, url_prefix="/health")
-app.register_blueprint(login_password.blueprint, url_prefix="/login/password")
+app.register_blueprint(login.blueprint, url_prefix="/login")
 
 @app.before_request
 def get_version():

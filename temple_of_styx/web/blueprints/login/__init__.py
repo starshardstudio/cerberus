@@ -7,7 +7,7 @@ from temple_of_styx.web.extensions import ext_sqla
 from temple_of_styx.web import session
 
 
-blueprint = f.Blueprint('login_password', __name__, template_folder='templates')
+blueprint = f.Blueprint('login', __name__, template_folder='templates')
 
 
 @blueprint.route("/", methods=["GET", "POST", "DELETE"])
