@@ -136,6 +136,7 @@ psycopg2 = "^2.9.6"
 alembic = "^1.10.3"
 cfig = {extras = ["cli"], version = "^0.3.0"}
 argon2-cffi = "^21.3.0"
+flask-login = "^0.6.2"
 
 
 
