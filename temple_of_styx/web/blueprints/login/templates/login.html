@@ -1,25 +1,40 @@
 {% extends "base.html" %}
 {% block main %}
-	<div class="chapter-1">
-		<form class="panel box form-flex" method="POST" action="password">
-			<h3>
-				Login with a password
-			</h3>
-			<label>
-				<span>Username</span>
-				<input type="text" name="username" autocomplete="username" placeholder="steffo">
-				<small></small>
-			</label>
-			<label>
-				<span>Password</span>
-				<input type="password" name="password" autocomplete="password" placeholder="••••••••">
-				<small></small>
-			</label>
-			<label>
-				<span></span>
-				<input type="submit" value="Login">
-				<small></small>
-			</label>
-		</form>
-	</div>
+	{% if current_user.is_authenticated %}
+		<div class="chapter-1">
+			<form class="panel box form-flex" method="POST" action="{{ url_for('login.login') }}">
+				<h3>
+					Logout
+				</h3>
+				<label>
+					<span></span>
+					<input type="submit" value="Logout">
+					<small></small>
+				</label>
+			</form>
+		</div>
+	{% else %}
+		<div class="chapter-1">
+			<form class="panel box form-flex" method="POST" action="{{ url_for('login.login_password') }}">
+				<h3>
+					Login with a password
+				</h3>
+				<label>
+					<span>Username</span>
+					<input type="text" name="username" autocomplete="username" placeholder="steffo">
+					<small></small>
+				</label>
+				<label>
+					<span>Password</span>
+					<input type="password" name="password" autocomplete="password" placeholder="••••••••">
+					<small></small>
+				</label>
+				<label>
+					<span></span>
+					<input type="submit" value="Login">
+					<small></small>
+				</label>
+			</form>
+		</div>
+	{% endif %}
 {% endblock %}

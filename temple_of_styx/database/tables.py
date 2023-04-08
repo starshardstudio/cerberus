@@ -39,6 +39,19 @@ class Person(Base):
             return a2ph.verify(self.password, value)
         except argon2.exceptions.VerifyMismatchError:
             return False
+        
+    def is_authenticated(self) -> bool:
+        return True
+
+    def is_active(self) -> bool:
+        return bool(self.password)
+    
+    def is_anonymous(self) -> bool:
+        return False
+    
+    def get_id(self) -> str:
+        return self.name
+
 
 class Control(Base):
     """
