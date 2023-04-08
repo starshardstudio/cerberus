@@ -23,7 +23,7 @@ class Person(Base):
 
     name: so.Mapped[str] = so.mapped_column(primary_key=True)
     avatar: so.Mapped[str] = so.mapped_column(nullable=False, default="https://raw.githubusercontent.com/starshardstudio/emblems/main/rendered/person.png")
-    password: so.Mapped[bytes] = so.mapped_column()
+    password: so.Mapped[str] = so.mapped_column()
 
     controls: so.Mapped["Control"] = so.relationship(back_populates="person")
     clients: so.Mapped["Client"] = so.relationship(back_populates="creator")
