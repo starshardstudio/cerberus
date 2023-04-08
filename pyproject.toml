@@ -135,19 +135,6 @@ flask-sqlalchemy = "^3.0.3"
 psycopg2 = "^2.9.6"
 alembic = "^1.10.3"
 cfig = {extras = ["cli"], version = "^0.3.0"}
-bcrypt = "^4.0.1"
-
-
-
-[tool.poetry.group.dev.dependencies]
-##############################
-# Development dependencies   #
-##############################
-# Same as above, but these dependencies are installed only if the project is being installed in development mode.
-# They are excluded from the final build.
-
-
-
 
 
 
