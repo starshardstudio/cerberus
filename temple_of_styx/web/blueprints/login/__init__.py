@@ -1,9 +1,9 @@
 import flask as f
+import flask_login as fl
 import sqlalchemy as s
 
 from temple_of_styx.database.tables import Person
 from temple_of_styx.web.extensions import ext_sqla
-from temple_of_styx.web import session
 
 
 blueprint = f.Blueprint('login', __name__, template_folder='templates')
@@ -31,10 +31,10 @@ def login():
                     return f.render_template("login.html"), 401
 
                 f.flash(f"Login successful! You are now logged in as {person.name}!", "green")
-                session.login(person=person)
+                fl.login_user(person)
             # Log out
             case "DELETE":
-                session.logout() 
+                fl.logout_user() 
             # Invalid method
             case _:
                 return f.abort(405)
