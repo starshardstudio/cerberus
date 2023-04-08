@@ -2,7 +2,6 @@ import flask as f
 import pkg_resources
 
 from temple_of_styx.config import DATABASE_URL, FLASK_SECRET_KEY, STYX_BLUELIB_COLORS, STYX_BACKGROUND_SRC, STYX_TITLE
-from .decorators import json
 from .extensions import ext_sqla, ext_auth
 from .blueprints import health, login_password
 
