@@ -2,7 +2,7 @@ import flask as f
 import pkg_resources
 
 from temple_of_styx.config import DATABASE_URL, FLASK_SECRET_KEY, STYX_BLUELIB_COLORS, STYX_BACKGROUND_SRC, STYX_TITLE
-from .extensions import ext_sqla, ext_auth
+from .extensions import ext_sqla, ext_login, ext_auth
 from .blueprints import health, login
 
 
@@ -15,6 +15,7 @@ app.config["STYX_BACKGROUND_SRC"] = STYX_BACKGROUND_SRC.__wrapped__
 app.config["STYX_TITLE"] = STYX_TITLE.__wrapped__
 
 ext_sqla.init_app(app)
+ext_login.init_app(app)
 ext_auth.init_app(app)
 
 app.register_blueprint(health.blueprint, url_prefix="/health")
