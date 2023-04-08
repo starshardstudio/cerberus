@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block main %}
+	<div class="chapter-1">
+		<form class="panel box form-flex" method="POST">
+			<h3>
+				Login with a password
+			</h3>
+			<label>
+				<span>Username</span>
+				<input type="text" name="username" autocomplete="username" placeholder="steffo">
+				<small></small>
+			</label>
+			<label>
+				<span>Password</span>
+				<input type="password" name="password" autocomplete="password" placeholder="••••••••">
+				<small></small>
+			</label>
+			<label>
+				<span></span>
+				<input type="submit" value="Login">
+				<small></small>
+			</label>
+		</form>
+	</div>
+{% endblock %}
