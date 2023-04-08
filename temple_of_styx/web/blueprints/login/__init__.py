@@ -16,6 +16,21 @@ def login():
             # Display login form
             case "GET":
                 return f.render_template("login.html")
+            # Log out
+            case "DELETE":
+                fl.logout_user() 
+                return f.render_template("login.html") 
+            # Invalid method
+            case _:
+                return f.abort(405)
+    else:
+        return f.abort(406)
+
+
+@blueprint.route("/password", methods=["POST"])
+def login_password():
+    if f.request.accept_mimetypes.accept_html:
+        match f.request.method: 
             # Log in
             case "POST":
                 username = f.request.form["username"]
@@ -32,13 +47,9 @@ def login():
 
                 f.flash(f"Login successful! You are now logged in as {person.name}!", "green")
                 fl.login_user(person)
-            # Log out
-            case "DELETE":
-                fl.logout_user() 
+                return f.render_template("login.html") 
             # Invalid method
             case _:
                 return f.abort(405)
-        # Display form
-        return f.render_template("login.html") 
     else:
         return f.abort(406)
