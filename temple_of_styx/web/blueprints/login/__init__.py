@@ -1,6 +1,5 @@
 import flask as f
 import sqlalchemy as s
-import argon2.exceptions
 
 from temple_of_styx.database.tables import Person
 from temple_of_styx.web.extensions import ext_sqla
