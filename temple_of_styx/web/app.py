@@ -24,7 +24,3 @@ app.register_blueprint(login.blueprint, url_prefix="/login")
 @app.before_request
 def get_version():
     f.g.styx_version = pkg_resources.get_distribution("temple_of_styx").version
-
-# Running this will run the app in debug mode.
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8080, debug=True)
