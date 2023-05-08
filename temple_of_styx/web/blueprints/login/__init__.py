@@ -36,6 +36,9 @@ def login_password():
             case "POST":
                 username = f.request.form["username"]
                 password = f.request.form["password"]
+                if not (username and password):
+                    f.flash("Missing username or password.", "red")
+                    return f.render_template("login.html"), 400
 
                 person: Person = ext_sqla.session.execute(s.select(Person).where(Person.name == username)).scalar()
                 if not person:
