@@ -25,8 +25,8 @@ class Person(Base):
     __tablename__ = "people"
 
     name: so.Mapped[str] = so.mapped_column(primary_key=True)
-    avatar: so.Mapped[str] = so.mapped_column(nullable=False, default="https://raw.githubusercontent.com/starshardstudio/emblems/main/rendered/person.png")
-    password: so.Mapped[str] = so.mapped_column()
+    avatar: so.Mapped[str] = so.mapped_column(default="https://raw.githubusercontent.com/starshardstudio/emblems/main/rendered/person.png")
+    password: so.Mapped[str | None] = so.mapped_column()
 
     controls: so.Mapped["Control"] = so.relationship(back_populates="person")
     clients: so.Mapped["Client"] = so.relationship(back_populates="creator")
@@ -61,8 +61,8 @@ class Control(Base):
 
     id: so.Mapped[uuid.UUID] = so.mapped_column(primary_key=True)
 
-    person_name: so.Mapped["str"] = so.mapped_column(s.ForeignKey("people.name"), nullable=False)
-    identity_name: so.Mapped["str"] = so.mapped_column(s.ForeignKey("identities.name"), nullable=False)
+    person_name: so.Mapped["str"] = so.mapped_column(s.ForeignKey("people.name"))
+    identity_name: so.Mapped["str"] = so.mapped_column(s.ForeignKey("identities.name"))
 
     person: so.Mapped["Person"] = so.relationship(back_populates="controls")
     identity: so.Mapped["Identity"] = so.relationship(back_populates="controlled_by")
@@ -81,8 +81,8 @@ class Scope(Base):
 
     id: so.Mapped[uuid.UUID] = so.mapped_column(primary_key=True)
 
-    control_id: so.Mapped[uuid.UUID] = so.mapped_column(s.ForeignKey("control.id"), nullable=False)
-    name: so.Mapped[str] = so.mapped_column(nullable=False)
+    control_id: so.Mapped[uuid.UUID] = so.mapped_column(s.ForeignKey("control.id"))
+    name: so.Mapped[str] = so.mapped_column()
 
     control: so.Mapped["Control"] = so.relationship(back_populates="scopes")
 
@@ -94,7 +94,7 @@ class Identity(Base):
     __tablename__ = "identities"
 
     name: so.Mapped[str] = so.mapped_column(primary_key=True)
-    avatar: so.Mapped[str] = so.mapped_column(nullable=False, default="https://raw.githubusercontent.com/starshardstudio/emblems/main/rendered/user.png")
+    avatar: so.Mapped[str] = so.mapped_column(default="https://raw.githubusercontent.com/starshardstudio/emblems/main/rendered/user.png")
 
     controlled_by: so.Mapped["Control"] = so.relationship(back_populates="identity")
     tokens: so.Mapped["Token"] = so.relationship(back_populates="identity")
@@ -110,7 +110,7 @@ class Token(Base, authlib.integrations.sqla_oauth2.OAuth2TokenMixin):
     __tablename__ = "people_tokens"
 
     id: so.Mapped[uuid.UUID] = so.mapped_column(primary_key=True)
-    identity_name: so.Mapped[str] = so.mapped_column(s.ForeignKey("identities.name"), nullable=False)
+    identity_name: so.Mapped[str] = so.mapped_column(s.ForeignKey("identities.name"))
 
     identity: so.Mapped["Identity"] = so.relationship(back_populates="tokens")
 
@@ -122,7 +122,7 @@ class Client(Base, authlib.integrations.sqla_oauth2.OAuth2ClientMixin):
     __tablename__ = "clients"
 
     id: so.Mapped[uuid.UUID] = so.mapped_column(primary_key=True)
-    creator_name: so.Mapped[str] = so.mapped_column(s.ForeignKey("people.name"), nullable=False)
+    creator_name: so.Mapped[str] = so.mapped_column(s.ForeignKey("people.name"))
 
     creator: so.Mapped["Person"] = so.relationship(back_populates="clients")
 
