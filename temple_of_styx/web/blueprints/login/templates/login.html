@@ -2,7 +2,7 @@
 {% block main %}
 	{% if current_user.is_authenticated %}
 		<div class="chapter-1">
-			<form class="panel box form-flex" method="POST" action="{{ url_for('login.login') }}">
+			<form class="panel box form-flex width-max600" method="POST" action="{{ url_for('login.login') }}">
 				<h3>
 					Logout
 				</h3>
@@ -15,7 +15,7 @@
 		</div>
 	{% else %}
 		<div class="chapter-1">
-			<form class="panel box form-flex" method="POST" action="{{ url_for('login.login_password') }}">
+			<form class="panel box form-flex width-max600" method="POST" action="{{ url_for('login.login_password') }}">
 				<h3>
 					Login with a password
 				</h3>

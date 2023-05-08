@@ -22,7 +22,7 @@
 		<main>
 			{% for category, message in get_flashed_messages(with_categories=True) %}
 				<div class="chapter-1">
-					<div class="panel box {{ category }}">
+					<div class="panel box {{ category }} width-max600">
 						<p>
 							{{ message }}
 						</p>
