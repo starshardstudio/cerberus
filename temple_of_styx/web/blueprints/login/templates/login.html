@@ -15,25 +15,22 @@
 		</div>
 	{% else %}
 		<div class="chapter-1">
-			<form class="panel box form-flex width-max1" method="POST" action="{{ url_for('login.login_password') }}">
+			<form class="panel box width-max1 zone-auth" method="POST" action="{{ url_for('login.login_password') }}">
 				<h3>
-					Login with a password
+					Who are you?
 				</h3>
-				<label>
-					<span>Username</span>
-					<input type="text" name="username" autocomplete="username" placeholder="steffo">
-					<small></small>
-				</label>
-				<label>
-					<span>Password</span>
-					<input type="password" name="password" autocomplete="password" placeholder="••••••••">
-					<small></small>
-				</label>
-				<label>
-					<span></span>
-					<input type="submit" value="Login">
-					<small></small>
-				</label>
+				<div class="avatar avatar-user avatar-large avatar-empty">
+					?
+				</div>
+				<div></div>
+				<p>
+					Enter your credentials to sign in:
+				</p>
+				<div></div>
+				<input type="text" name="username" autocomplete="username" placeholder="Username" aria-label="Username">
+				<input type="password" name="password" autocomplete="password" placeholder="Password" aria-label="Password">
+				<div></div>
+				<input type="submit" value="Login"/>
 			</form>
 		</div>
 	{% endif %}
