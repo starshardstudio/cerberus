@@ -2,13 +2,13 @@ code {
     white-space: nowrap;
 }
 
-.width-max600 {
-    flex-basis: 584px;
+.width-max1 {
+    flex-basis: 476px;
     flex-grow: 0;
 }
 
-@media screen and (max-width: 600px) {
-    .width-max600 {
+@media screen and (max-width: 492px) {
+    .width-max1 {
         flex-basis: 100%;
         flex-grow: 0;
     }
