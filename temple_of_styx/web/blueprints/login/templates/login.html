@@ -2,10 +2,11 @@
 {% block main %}
 	{% if current_user.is_authenticated %}
 		<div class="chapter-1">
-			<form class="panel box form-flex width-max1" method="POST" action="{{ url_for('login.login') }}">
+			<form class="panel box width-max1 zone-auth" method="POST" action="{{ url_for('login.login') }}">
 				<h3>
 					Logout
 				</h3>
+				<img class="avatar avatar-user avatar-large avatar-empty" src="{{ current_user.avatar }}">
 				<label>
 					<span></span>
 					<input type="submit" value="Logout">
