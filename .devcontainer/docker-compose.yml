@@ -5,16 +5,15 @@ volumes:
 
 services:
   app:
-    image: "mcr.microsoft.com/vscode/devcontainers/python:3.10"
+    image: "mcr.microsoft.com/vscode/devcontainers/python"
     command: sleep infinity
     volumes:
-      - "../..:/workspaces:cached"
-    env_file: ".env"
+      - "..:/workspace:cached"
 
   db:
     image: "postgres"
     restart: unless-stopped
-    env:
+    environment:
         POSTGRES_USER: "styx"
         POSTGRES_PASSWORD: "styx"
         POSTGRES_DB: "styx"

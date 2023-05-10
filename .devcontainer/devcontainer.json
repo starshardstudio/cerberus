@@ -2,7 +2,7 @@
 	"name": "Temple of Styx",
 	"dockerComposeFile": "docker-compose.yml",
 	"service": "app",
-	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+	"workspaceFolder": "/workspace",
 
 	"customizations": {
 		"vscode": {
