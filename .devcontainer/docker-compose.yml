@@ -9,6 +9,7 @@ services:
     command: sleep infinity
     volumes:
       - "..:/workspace:cached"
+    env_file: ".env"
 
   db:
     image: "postgres"
