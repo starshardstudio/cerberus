@@ -10,7 +10,7 @@ def DATABASE_URL(value) -> s.URL:
     return s.make_url(value)
 
 
-@config.optional()
+@config.required()
 def WERKZEUG_PROXY_FOR_COUNT(value: str) -> int:
     try:
         return int(value)
@@ -18,7 +18,7 @@ def WERKZEUG_PROXY_FOR_COUNT(value: str) -> int:
         raise cfig.InvalidValueError("Not a valid int.")
 
 
-@config.optional()
+@config.required()
 def WERKZEUG_PROXY_PROTO_COUNT(value: str) -> int:
     try:
         return int(value)
@@ -26,7 +26,7 @@ def WERKZEUG_PROXY_PROTO_COUNT(value: str) -> int:
         raise cfig.InvalidValueError("Not a valid int.")
 
 
-@config.optional()
+@config.required()
 def WERKZEUG_PROXY_HOST_COUNT(value: str) -> int:
     try:
         return int(value)
@@ -34,7 +34,7 @@ def WERKZEUG_PROXY_HOST_COUNT(value: str) -> int:
         raise cfig.InvalidValueError("Not a valid int.")
 
 
-@config.optional()
+@config.required()
 def WERKZEUG_PROXY_PREFIX_COUNT(value: str) -> int:
     try:
         return int(value)
