@@ -4,7 +4,7 @@ import werkzeug.middleware.proxy_fix
 
 from temple_of_styx.config import DATABASE_URL, FLASK_SECRET_KEY, STYX_BLUELIB_COLORS, STYX_BACKGROUND_SRC, STYX_TITLE, WERKZEUG_PROXY_FOR_COUNT, WERKZEUG_PROXY_PROTO_COUNT, WERKZEUG_PROXY_HOST_COUNT, WERKZEUG_PROXY_PREFIX_COUNT
 from .extensions import ext_sqla, ext_login, ext_auth
-from .blueprints import health, login
+from .blueprints import health, login, info
 
 
 app = f.Flask(__name__)
@@ -29,6 +29,7 @@ ext_auth.init_app(app)
 
 app.register_blueprint(health.blueprint, url_prefix="/health")
 app.register_blueprint(login.blueprint, url_prefix="/login")
+app.register_blueprint(info.blueprint, url_prefix="/info")
 
 @app.before_request
 def get_version():
