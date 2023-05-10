@@ -108,7 +108,7 @@ classifiers = [
 # Poetry can create "binaries" to add to the PATH when the project is installed.
 # They are specified in the form of a mapping with the command name as key and the function to execute as value.
 
-temple-of-styx = "temple_of_styx.__main__:main"
+styxctl = "temple_of_styx.cli.__main__:main"
 
 
 
@@ -137,6 +137,7 @@ alembic = "^1.10.3"
 cfig = {extras = ["cli"], version = "^0.3.0"}
 argon2-cffi = "^21.3.0"
 flask-login = "^0.6.2"
+click = "^8.1.3"
 
 
 
