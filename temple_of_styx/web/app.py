@@ -2,7 +2,7 @@ import flask as f
 import pkg_resources
 import werkzeug.middleware.proxy_fix
 
-from temple_of_styx.config import DATABASE_URL, FLASK_SECRET_KEY, STYX_BLUELIB_COLORS, STYX_BACKGROUND_SRC, STYX_TITLE
+from temple_of_styx.config import DATABASE_URL, FLASK_SECRET_KEY, STYX_BLUELIB_COLORS, STYX_BACKGROUND_SRC, STYX_TITLE, WERKZEUG_PROXY_FOR_COUNT, WERKZEUG_PROXY_PROTO_COUNT, WERKZEUG_PROXY_HOST_COUNT, WERKZEUG_PROXY_PREFIX_COUNT
 from .extensions import ext_sqla, ext_login, ext_auth
 from .blueprints import health, login
 
@@ -10,7 +10,11 @@ from .blueprints import health, login
 app = f.Flask(__name__)
 
 app.wsgi_app = werkzeug.middleware.proxy_fix.ProxyFix(
-    app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_prefix=1
+    app.wsgi_app, 
+    x_for=WERKZEUG_PROXY_FOR_COUNT.__wrapped__, 
+    x_proto=WERKZEUG_PROXY_PROTO_COUNT.__wrapped__, 
+    x_host=WERKZEUG_PROXY_HOST_COUNT.__wrapped__, 
+    x_prefix=WERKZEUG_PROXY_PREFIX_COUNT.__wrapped__
 )
 
 app.config["SECRET_KEY"] = FLASK_SECRET_KEY.__wrapped__
