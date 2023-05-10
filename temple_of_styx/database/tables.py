@@ -59,7 +59,7 @@ class Control(Base):
     """
     __tablename__ = "control"
 
-    id: so.Mapped[uuid.UUID] = so.mapped_column(primary_key=True)
+    id: so.Mapped[uuid.UUID] = so.mapped_column(primary_key=True, default=uuid.uuid4)
 
     person_name: so.Mapped["str"] = so.mapped_column(s.ForeignKey("people.name"))
     identity_name: so.Mapped["str"] = so.mapped_column(s.ForeignKey("identities.name"))
@@ -79,7 +79,7 @@ class Scope(Base):
     """
     __tablename__ = "scopes"
 
-    id: so.Mapped[uuid.UUID] = so.mapped_column(primary_key=True)
+    id: so.Mapped[uuid.UUID] = so.mapped_column(primary_key=True, default=uuid.uuid4)
 
     control_id: so.Mapped[uuid.UUID] = so.mapped_column(s.ForeignKey("control.id"))
     name: so.Mapped[str] = so.mapped_column()
@@ -109,7 +109,7 @@ class Token(Base, authlib.integrations.sqla_oauth2.OAuth2TokenMixin):
     """
     __tablename__ = "people_tokens"
 
-    id: so.Mapped[uuid.UUID] = so.mapped_column(primary_key=True)
+    id: so.Mapped[uuid.UUID] = so.mapped_column(primary_key=True, default=uuid.uuid4)
     identity_name: so.Mapped[str] = so.mapped_column(s.ForeignKey("identities.name"))
 
     identity: so.Mapped["Identity"] = so.relationship(back_populates="tokens")
@@ -121,7 +121,7 @@ class Client(Base, authlib.integrations.sqla_oauth2.OAuth2ClientMixin):
     """
     __tablename__ = "clients"
 
-    id: so.Mapped[uuid.UUID] = so.mapped_column(primary_key=True)
+    id: so.Mapped[uuid.UUID] = so.mapped_column(primary_key=True, default=uuid.uuid4)
     creator_name: so.Mapped[str] = so.mapped_column(s.ForeignKey("people.name"))
 
     creator: so.Mapped["Person"] = so.relationship(back_populates="clients")
