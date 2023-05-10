@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block main %}
 	<div class="chapter-1">
-		<div class="panel box width-max1" method="POST" action="{{ url_for('login.login') }}">
+		<div class="panel box width-max1 align-center" method="POST" action="{{ url_for('login.login') }}">
 			<h3>
 				{{ current_user.name }}
 			</h3>

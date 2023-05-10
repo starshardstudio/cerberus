@@ -41,7 +41,7 @@ code {
     background-color: hsl(var(--bhsl-current-hue) var(--bhsl-current-saturation) var(--bhsl-current-lightness) / var(--b-panel-nested-opacity));
 }
 
-.zone-auth {
+.align-center {
     align-items: center;
     text-align: center;
 }
