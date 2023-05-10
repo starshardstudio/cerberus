@@ -25,11 +25,11 @@ code {
 }
 
 .avatar-user {
-    border-radius: 12.5%;
+    border-radius: 100%;
 }
 
 .avatar-identity {
-    border-radius: 100%;
+    border-radius: 12.5%;
 }
 
 .avatar-large {
