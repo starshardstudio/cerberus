@@ -15,7 +15,13 @@
                 "hidden": false,
                 "group": "Web",
                 "order": 1
-            }
+            },
+			"env": {
+				"FLASK_SECRET_KEY": "development",
+				"STYX_TITLE": "Development Styx",
+				"STYX_BLUELIB_COLORS": "royalblue",
+				"STYX_BACKGROUND_SRC": "https://bluelib.steffo.eu/examples/fabrice-nerfin-puHQJZd3MDg-unsplash.jpg"
+			}
 		}
 	]
 }
