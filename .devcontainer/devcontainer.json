@@ -10,7 +10,8 @@
 			"extensions": [
 				"mutantdino.resourcemonitor",
 				"ms-python.python",
-				"bungcip.better-toml"
+				"bungcip.better-toml",
+				"samuelcolvin.jinjahtml"
 			]
 		}
 	},
