@@ -1,5 +1,6 @@
 import flask as f
 import pkg_resources
+import werkzeug.middleware.proxy_fix
 
 from temple_of_styx.config import DATABASE_URL, FLASK_SECRET_KEY, STYX_BLUELIB_COLORS, STYX_BACKGROUND_SRC, STYX_TITLE
 from .extensions import ext_sqla, ext_login, ext_auth
@@ -7,6 +8,10 @@ from .blueprints import health, login
 
 
 app = f.Flask(__name__)
+
+app.wsgi_app = werkzeug.middleware.proxy_fix.ProxyFix(
+    app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_prefix=1
+)
 
 app.config["SECRET_KEY"] = FLASK_SECRET_KEY.__wrapped__
 app.config["SQLALCHEMY_DATABASE_URI"] = DATABASE_URL.__wrapped__
