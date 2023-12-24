@@ -24,12 +24,12 @@ code {
     align-items: center;
 }
 
-.avatar-user {
-    border-radius: 12.5%;
+.avatar-person {
+    border-radius: 100%;
 }
 
 .avatar-identity {
-    border-radius: 100%;
+    border-radius: 12.5%;
 }
 
 .avatar-large {
@@ -41,7 +41,7 @@ code {
     background-color: hsl(var(--bhsl-current-hue) var(--bhsl-current-saturation) var(--bhsl-current-lightness) / var(--b-panel-nested-opacity));
 }
 
-.zone-auth {
+.align-center {
     align-items: center;
     text-align: center;
 }

@@ -1,0 +1,24 @@
+{
+	// https://go.microsoft.com/fwlink/?LinkId=733558
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Configure Python environment",
+			"type": "shell",
+			"command": "${workspaceFolder}/.scripts/install.sh",
+			"problemMatcher": []
+		},
+		{
+			"label": "Apply alembic migrations",
+			"type": "shell",
+			"command": "${workspaceFolder}/.scripts/migrate.sh",
+			"problemMatcher": []
+		},
+		{
+			"label": "Initialize database with development data",
+			"type": "shell",
+			"command": "${workspaceFolder}/.scripts/initialize.sh",
+			"problemMatcher": []
+		}
+	]
+}

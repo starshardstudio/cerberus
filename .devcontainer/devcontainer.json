@@ -1,0 +1,20 @@
+{
+	"name": "Temple of Styx",
+	"dockerComposeFile": "docker-compose.yml",
+	"service": "app",
+	"workspaceFolder": "/workspace",
+
+	"customizations": {
+		"vscode": {
+			"settings": {},
+			"extensions": [
+				"mutantdino.resourcemonitor",
+				"ms-python.python",
+				"bungcip.better-toml",
+				"samuelcolvin.jinjahtml"
+			]
+		}
+	},
+
+	"forwardPorts": [8080]
+}

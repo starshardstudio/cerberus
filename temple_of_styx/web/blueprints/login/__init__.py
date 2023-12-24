@@ -50,8 +50,8 @@ def login_password():
 
                 f.flash(f"Login successful! You are now logged in as {person.name}!", "green")
                 fl.login_user(person)
-                return f.render_template("login.html")
-                # Invalid method
+                return f.redirect(f.url_for("info.info"))
+            # Invalid method
             case _:
                 return f.abort(405)
     else:
