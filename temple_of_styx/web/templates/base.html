@@ -4,16 +4,15 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="description" content="">
 		<title>{{ config["STYX_TITLE"] }}</title>
-		<link rel="stylesheet" href="https://unpkg.com/@steffo/bluelib@8.1.0/dist/base.root.css" type="text/css">
-		<link rel="stylesheet" href="https://unpkg.com/@steffo/bluelib@8.1.0/dist/classic.root.css" type="text/css">
-		<link rel="stylesheet" href="https://unpkg.com/@steffo/bluelib@8.1.0/dist/glass.root.css" type="text/css">
-		<link rel="stylesheet" href="https://unpkg.com/@steffo/bluelib@8.1.0/dist/layouts-center.root.css" type="text/css">
-		<link rel="stylesheet" href="https://unpkg.com/@steffo/bluelib@8.1.0/dist/colors-{{ config["STYX_BLUELIB_COLORS"] }}.root.css" type="text/css">
-		<link rel="stylesheet" href="https://unpkg.com/@steffo/bluelib@8.1.0/dist/fonts-fira-ghpages.root.css" type="text/css">
+		<link rel="stylesheet" href="https://unpkg.com/@steffo/bluelib@9.0.1/dist/base.root.css" type="text/css">
+		<link rel="stylesheet" href="https://unpkg.com/@steffo/bluelib@9.0.1/dist/classic.root.css" type="text/css">
+		<link rel="stylesheet" href="https://unpkg.com/@steffo/bluelib@9.0.1/dist/glass.root.css" type="text/css">
+		<link rel="stylesheet" href="https://unpkg.com/@steffo/bluelib@9.0.1/dist/layouts-center.root.css" type="text/css">
+		<link rel="stylesheet" href="https://unpkg.com/@steffo/bluelib@9.0.1/dist/colors-{{ config["STYX_BLUELIB_COLORS"] }}.root.css" type="text/css">
+		<link rel="stylesheet" href="https://unpkg.com/@steffo/bluelib@9.0.1/dist/fonts-fira-ghpages.root.css" type="text/css">
 		<link rel="stylesheet" href="{{ url_for("static", filename="tweaks.css") }}" type="text/css">
 	</head>
 	<body class="bluelib layout-center">
-		<img class="layout-center-background" src="{{ config["STYX_BACKGROUND_SRC"] }}">
 		<header>
 			<h1>
 				{{ config["STYX_TITLE"] }}
