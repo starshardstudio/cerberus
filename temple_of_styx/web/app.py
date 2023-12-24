@@ -2,9 +2,8 @@ import flask as f
 import pkg_resources
 
 from temple_of_styx.config import DATABASE_URL, FLASK_SECRET_KEY, STYX_BLUELIB_COLORS, STYX_TITLE
-from .extensions import ext_sqla, ext_login, ext_auth
 from .blueprints import health, login
-
+from .extensions import ext_sqla, ext_login, ext_auth
 
 app = f.Flask(__name__)
 
@@ -19,6 +18,7 @@ ext_auth.init_app(app)
 
 app.register_blueprint(health.blueprint, url_prefix="/health")
 app.register_blueprint(login.blueprint, url_prefix="/login")
+
 
 @app.before_request
 def get_version():

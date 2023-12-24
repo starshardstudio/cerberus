@@ -1,6 +1,5 @@
 import argon2
 
-
 a2ph = argon2.PasswordHasher(
     time_cost=argon2.DEFAULT_TIME_COST,
     memory_cost=argon2.DEFAULT_MEMORY_COST,
@@ -11,7 +10,6 @@ a2ph = argon2.PasswordHasher(
 """
 :mod:`argon2` password hasher, configured and available for usage elsewhere in the project.
 """
-
 
 __all__ = (
     "a2ph",

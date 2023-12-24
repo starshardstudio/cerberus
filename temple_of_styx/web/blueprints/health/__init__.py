@@ -1,6 +1,5 @@
 import flask as f
 
-
 blueprint = f.Blueprint('health', __name__, template_folder='templates')
 
 

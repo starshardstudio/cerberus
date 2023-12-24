@@ -19,6 +19,13 @@ indent_size = 4
 # Python (sadly) strongly recommends the usage of 4 spaces as indentation.
 indent_style = space
 
+[*.yml]
+
+# Same goes for yml
+indent_style = space
+# But too much indentation makes things unreadable
+indent_size = 2
+
 
 [*.html]
 

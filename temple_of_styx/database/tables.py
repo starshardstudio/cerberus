@@ -2,12 +2,13 @@
 Module defining declaratively SQL tables via :mod:`sqlalchemy`.
 """
 
+import uuid
+
+import argon2
+import authlib.integrations.sqla_oauth2
 import sqlalchemy as s
 import sqlalchemy.orm as so
 import sqlalchemy.schema as ss
-import authlib.integrations.sqla_oauth2
-import uuid
-import argon2
 
 from ..authn.password import a2ph
 
@@ -39,16 +40,16 @@ class Person(Base):
             return a2ph.verify(self.password, value)
         except argon2.exceptions.VerifyMismatchError:
             return False
-        
+
     def is_authenticated(self) -> bool:
         return True
 
     def is_active(self) -> bool:
         return bool(self.password)
-    
+
     def is_anonymous(self) -> bool:
         return False
-    
+
     def get_id(self) -> str:
         return self.name
 

@@ -1,5 +1,5 @@
-from sqlalchemy import create_engine
 from alembic import context
+from sqlalchemy import create_engine
 
 # Don't use relative imports here!
 from temple_of_styx.config import DATABASE_URL
@@ -23,7 +23,7 @@ def run_migrations_online() -> None:
 
     with engine.connect() as connection:
         context.configure(
-            connection=connection, 
+            connection=connection,
             target_metadata=Base.metadata
         )
 

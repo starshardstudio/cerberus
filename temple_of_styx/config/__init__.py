@@ -1,6 +1,5 @@
-import sqlalchemy as s
 import cfig
-
+import sqlalchemy as s
 
 config = cfig.Configuration()
 
