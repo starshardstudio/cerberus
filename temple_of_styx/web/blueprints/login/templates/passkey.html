@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block main %}
+	<div class="chapter-1">
+		<form class="panel box width-max1 zone-login page-passkey align-center" method="POST" action="{{ url_for('login.login_passkey') }}">
+			<h3>
+				{{ selected_user.name }}, is it really you?
+			</h3>
+			<img alt="" class="avatar avatar-person avatar-large avatar-empty" src="{{ selected_user.avatar }}">
+			<div></div>
+			<p>
+				Activate your passkey to prove your identity.
+			</p>
+			<div></div>
+			<input type="button" name="passkey" value="Trigger passkey" />
+			<div></div>
+			<input type="submit" value="Continue" />
+		</form>
+	</div>
+{% endblock %}

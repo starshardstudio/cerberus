@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block main %}
 	<div class="chapter-1">
-		<form class="panel box width-max1 zone-auth align-center" method="POST" action="{{ url_for('login.login_password') }}">
+		<form class="panel box width-max1 zone-login page-login align-center" method="POST" action="{{ url_for('login.login') }}">
 			<h3>
 				Who are you?
 			</h3>
@@ -10,13 +10,12 @@
 			</div>
 			<div></div>
 			<p>
-				Enter your credentials to sign in:
+				Enter your username to proceed to sign in:
 			</p>
 			<div></div>
 			<input type="text" name="username" autocomplete="username" placeholder="Username" aria-label="Username">
-			<input type="password" name="password" autocomplete="password" placeholder="Password" aria-label="Password">
 			<div></div>
-			<input type="submit" value="Login"/>
+			<input type="submit" value="Continue"/>
 		</form>
 	</div>
 {% endblock %}

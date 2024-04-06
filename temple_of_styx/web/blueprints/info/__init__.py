@@ -13,7 +13,7 @@ blueprint = f.Blueprint('info', __name__, template_folder='templates')
 def info():
     if f.request.accept_mimetypes.accept_html:
         if not fl.current_user.is_authenticated:
-            return f.abort(401)
+            return f.render_template("unauthenticated.html"), 401
         return f.render_template("info.html")
     elif f.request.accept_mimetypes.accept_json:
         raise NotImplementedError("TODO")

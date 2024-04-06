@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block main %}
+	<div class="chapter-1">
+		<form class="panel box width-max1 zone-info align-center" method="GET" action="{{ url_for('login.login') }}">
+			<h3>
+				Not logged in
+			</h3>
+			<div aria-hidden="true" class="avatar avatar-person avatar-large avatar-empty">
+				?
+			</div>
+			<div></div>
+			<p>
+				To view your account information, you must first login.
+			</p>
+			<div></div>
+			<input type="submit" value="Login"/>
+		</form>
+	</div>
+{% endblock %}
