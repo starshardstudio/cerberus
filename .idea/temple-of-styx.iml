@@ -17,6 +17,7 @@
         <option value="$MODULE_DIR$/temple_of_styx/web/templates" />
         <option value="$MODULE_DIR$/temple_of_styx/web/blueprints/health/templates" />
         <option value="$MODULE_DIR$/temple_of_styx/web/blueprints/login/templates" />
+        <option value="$MODULE_DIR$/temple_of_styx/web/blueprints/info/templates" />
       </list>
     </option>
   </component>
