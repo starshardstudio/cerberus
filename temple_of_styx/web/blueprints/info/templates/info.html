@@ -1,13 +1,92 @@
 {% extends "base.html" %}
 {% block main %}
 	<div class="chapter-1">
-		<form class="panel box width-max1 zone-info align-center" method="POST" action="{{ url_for('login.logout') }}">
+		<div class="panel box width-max2 zone-info align-center">
 			<h3>
 				{{ current_user.name }}'s account info
 			</h3>
 			<img alt="" class="avatar avatar-person avatar-large avatar-empty" src="{{ current_user.avatar }}">
-			<div></div>
-			<input type="submit" value="Logout"/>
+		</div>
+	</div>
+	<div class="chapter-2">
+		{% if current_user.has_password() %}
+			<form class="panel box width-max1 zone-info-passwd form-flex" method="POST" action="{{ url_for('info.passwd') }}">
+				<h4>
+					Change password
+				</h4>
+				<label>
+					<span>Current</span>
+					<input type="password" name="current" placeholder="hunter2">
+					<span></span>
+				</label>
+				<label>
+					<span>New</span>
+					<input type="password" name="password1" placeholder="Correct-Horse-Battery-Staple">
+					<span></span>
+				</label>
+				<label>
+					<span>Confirm</span>
+					<input type="password" name="password2" placeholder="Correct-Horse-Battery-Staple">
+					<span></span>
+				</label>
+				<label class="float-bottom">
+					<span></span>
+					<input type="submit" name="change" value="Change">
+					<span></span>
+				</label>
+			</form>
+		{% else %}
+			<form class="panel box width-max1 zone-info-passwd form-flex" method="POST" action="{{ url_for('info.passwd') }}">
+				<h4>
+					Set password
+				</h4>
+				<label>
+					<span>Password</span>
+					<input type="password" name="password1" placeholder="Correct-Horse-Battery-Staple">
+					<span></span>
+				</label>
+				<label>
+					<span>Confirm</span>
+					<input type="password" name="password2" placeholder="Correct-Horse-Battery-Staple">
+					<span></span>
+				</label>
+				<label class="float-bottom">
+					<span></span>
+					<input type="submit" name="set" value="Set">
+					<span></span>
+				</label>
+			</form>
+		{% endif %}
+		{% if current_user.has_passkey() %}
+		{% else %}
+			<form class="panel box width-max1 zone-info-passwd form-flex" method="POST" action="{{ url_for('info.passkey') }}">
+				<h4>
+					Set passkey
+				</h4>
+				<label>
+					<span>1.</span>
+					<input type="button" name="generate" value="Generate">
+					<span></span>
+				</label>
+				<label class="float-bottom">
+					<span>2.</span>
+					<input class="fade" type="submit" name="set" disabled="" value="Set">
+					<span></span>
+				</label>
+			</form>
+			<script src="{{ url_for("static", filename="passkey.js") }}"></script>
+		{% endif %}
+	</div>
+	<div class="chapter-1">
+		<form class="panel box width-max2 zone-info-session form-flex" method="POST" action="{{ url_for('login.logout') }}">
+			<h4>
+				Session options
+			</h4>
+			<label class="float-bottom">
+				<span></span>
+				<input type="submit" name="logout" value="Logout"/>
+				<span></span>
+			</label>
 		</form>
 	</div>
 {% endblock %}

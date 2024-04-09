@@ -14,6 +14,30 @@ code {
     }
 }
 
+.width-max1 :is(input, button) {
+    max-width: 320px;
+    width: 100%;
+    height: 2.4em;
+}
+
+.width-max2 {
+    flex-basis: 968px;
+    flex-grow: 0;
+}
+
+@media screen and (max-width: 984px) {
+    .width-max2 {
+        flex-basis: 100%;
+        flex-grow: 0;
+    }
+}
+
+.width-max2 :is(input, button) {
+    max-width: 812px;
+    width: 100%;
+    height: 2.4em;
+}
+
 .avatar {
     user-select: none;
     font-size: xx-large;
@@ -44,10 +68,4 @@ code {
 .align-center {
     align-items: center;
     text-align: center;
-}
-
-input, button {
-    max-width: 320px;
-    width: 100%;
-    height: 2.4em;
 }

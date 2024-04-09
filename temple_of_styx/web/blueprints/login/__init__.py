@@ -29,11 +29,11 @@ def login():
                     return f.render_template("login.html")
                 # noinspection PyUnreachableCode
                 # Login via password
-                if person.password is not None:
+                if person.has_password():
                     f.session["username"] = username
                     return f.redirect(f.url_for("login.login_password"))
                 # TODO: Login via passkey
-                elif False:
+                elif person.has_passkey():
                     f.session["username"] = username
                     return f.redirect(f.url_for("login.login_passkey"))
                 # No available login methods
@@ -110,7 +110,7 @@ def login_passkey():
             # TODO: Authenticate via passkey
             case "POST":
                 return f.abort(500)
-                f.flash(f"Login successful! You are now logged in as {person.name}!", "green")
+                f.flash(f"Login successful! You are now logged in as {person.name}!", category="green")
                 fl.login_user(person)
                 del f.session["username"]
                 return f.redirect(f.url_for("info.info"))

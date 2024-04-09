@@ -6,6 +6,7 @@ import uuid
 
 import argon2
 import authlib.integrations.sqla_oauth2
+import secrets
 import sqlalchemy as s
 import sqlalchemy.orm as so
 import sqlalchemy.schema as ss
@@ -28,9 +29,22 @@ class Person(Base):
     name: so.Mapped[str] = so.mapped_column(primary_key=True)
     avatar: so.Mapped[str] = so.mapped_column(default="https://raw.githubusercontent.com/starshardstudio/emblems/main/rendered/person.png")
     password: so.Mapped[str | None] = so.mapped_column()
+    passkey_challenge: so.Mapped[bytes | None] = so.mapped_column()
 
     controls: so.Mapped["Control"] = so.relationship(back_populates="person")
     clients: so.Mapped["Client"] = so.relationship(back_populates="creator")
+
+    def has_password(self) -> bool:
+        return self.password is not None
+
+    def has_passkey(self) -> bool:
+        return False
+
+    def auth_methods_count(self) -> int:
+        return sum([
+            self.has_password(),
+            self.has_passkey(),
+        ])
 
     def set_password(self, value: str) -> None:
         self.password = a2ph.hash(value)
@@ -40,6 +54,9 @@ class Person(Base):
             return a2ph.verify(self.password, value)
         except argon2.exceptions.VerifyMismatchError:
             return False
+
+    def generate_passkey_challenge(self) -> None:
+        self.passkey_challenge = secrets.token_bytes(128)
 
     def is_authenticated(self) -> bool:
         return True
@@ -51,6 +68,9 @@ class Person(Base):
         return False
 
     def get_id(self) -> str:
+        return self.name
+    
+    def get_display_name(self) -> str:
         return self.name
 
 

@@ -53,6 +53,11 @@ def STYX_TITLE(value) -> str:
 
 
 @config.required()
+def STYX_ID(value) -> str:
+    return value
+
+
+@config.required()
 def STYX_BLUELIB_COLORS(value) -> str:
     """
     The name of the colors stylesheet to load, without the prefix.
